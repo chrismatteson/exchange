@@ -24,5 +24,29 @@ class exchange (
   $tenantorganizationconfig = $exchange::params::tenantorganizationconfig,
   ){
 
-  exec { 'install':
-    command => '$installpath/setup.exe /mode:$mode /$acceptexchangeserverlicense /$roles /$installwindowscomponents /$organizationname /$targetdir /$sourcedir 
+  class { 'exchange::install':
+    installerlocation               => $installerlocation,
+    setupmode                       => $setupmode,
+    roles                           => $roles,
+    installwindowscomponents        => $installwindowscomponents,
+    orgname                         => $orgname,
+    targetdir                       => $targetdir,
+    sourcedir                       => $sourcedir,
+    updatesdir                      => $updatesdir,
+    domaincontroller                => $domaincontroller,
+    answerfile                      => $answerfile,
+    donotstarttransport             => $donotstarttransport,
+    enableerrorreporting            => $enableerrorreporting,
+    customerfeedbackenabled         => $customerfeedbackenabled,
+    addumlanguagepack               => $addumlanguagepack,
+    removeumlanguagepack            => $removeumlanguagepack,
+    newprovisionedserver            => $newprovisionedserver,
+    removeprovisionedserver         => $removeprovisionedserver,
+    mdbname                         => $mdbname,
+    dbfilepath                      => $dbfilepath,
+    logfolderpath                   => $logfolderpath,
+    activedirectorysplitpermissions => $activedirectorysplitpermissions,
+    tenantorganizationconfig        => $tenantorganizationconfig,
+  }
+
+
